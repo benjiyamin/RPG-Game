@@ -1,0 +1,48 @@
+#arena {
+    display: none
+}
+
+.atk-wrapper {
+    width: 300px;
+    height: 300px;
+}
+
+.def-wrapper {
+    width: 200px;
+    height: 200px;
+}
+
+.end-wrapper {
+    display: none;
+}
+
+#cardDefender {
+    display: none
+}
+
+.fighter-card {
+    cursor: pointer;
+}
+
+.fighter-icon {
+    width: 100px;
+    cursor: pointer;
+}
+
+@keyframes flickerAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.flicker {
+    animation: flickerAnimation .15s 3;
+}
