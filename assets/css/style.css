@@ -3,8 +3,27 @@
     src: url("../fonts/PKMN_RBYGSC.ttf");
 }
 
+@font-face {
+    font-family: "Pkmn Logo";
+    src: url("../fonts/Pokemon_Solid.ttf");
+}
+
 .gb-text {
     font-family: 'Gameboy', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.gb-display {
+    background-image: linear-gradient(46deg, rgba(72, 80, 85, 0), rgba(143, 151, 156, 0.58) 80%);
+}
+
+.navbar .logo-text {
+    font-family: 'Pkmn Logo', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffcc03;
+    text-shadow:
+        -1px -1px 0 rgb(0, 128, 255),
+        1px -1px 0 rgb(0, 128, 255),
+        -1px 1px 0 rgb(0, 128, 255),
+        1px 1px 0 rgb(0, 128, 255);
 }
 
 .gb-border {

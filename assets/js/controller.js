@@ -25,9 +25,8 @@ function Controller(model, view) {
       let cardBody = $('<div>', view)
         .addClass('card-body')
         .html(cardTitle)
-
       let card = $('<div>', view)
-        .addClass('card fighter-card')
+        .addClass('card fighter-card shadow')
         .append(cardImg)
         .append(cardBody)
         .on('click', function () {
