@@ -56,22 +56,25 @@ function Controller(model, view) {
     let $enemies = $('#enemies', view)
     let $fighterIcons = $('#fighterIcons', view)
       .empty()
-    if (model.fighters.length > 0) {
+    if (model.queued().length > 0) {
       model.fighters.forEach(fighter => {
-        let fighterImg = $('<img>', view)
-          .addClass('fighter-icon')
-          .attr('src', fighter.opts.imgIcon)
-          .on('click', function () {
-            model.pickDefender(fighter)
-            self.renderDefender()
-            $('#btnAtk', view).attr('disabled', false)
-          })
-        if (model.queued().indexOf(fighter) === -1) {
-          fighterImg.addClass('disabled')
+        if (fighter !== model.attacker) {
+          let fighterImg = $('<img>', view)
+            .addClass('fighter-icon')
+            .attr('src', fighter.opts.imgIcon)
+            .on('click', function () {
+              model.pickDefender(fighter)
+              self.renderDefender()
+              $('#btnAtk', view).attr('disabled', false)
+            })
+          if (model.queued().indexOf(fighter) === -1) {
+            fighterImg.addClass('disabled')
+          }
+          $fighterIcons.append(fighterImg)
+          //$enemies.show()
         }
-        $fighterIcons.append(fighterImg)
-        $enemies.show()
       });
+      $enemies.show()
     } else {
       $enemies.hide()
     }
