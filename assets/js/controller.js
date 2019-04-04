@@ -12,13 +12,17 @@ function Controller(model, view) {
       .empty()
     model.fighters.forEach(fighter => {
 
-      let cardImg = $('<img>')
+      let cardImg = $('<img>', view)
         .addClass('card-img-top')
         .attr('src', fighter.opts.imgIcon)
-      let cardTitle = $('<h5>')
-        .addClass('card-title')
-        .text(fighter.opts.name)
-      let cardBody = $('<div>')
+      let hpBadge = $('<span>', view)
+        .addClass('badge badge-primary')
+        .text(fighter.healthPoints)
+      let cardTitle = $('<h6>', view)
+        .addClass('card-title text-center')
+        .text(fighter.opts.name + ' ')
+        .append(hpBadge)
+      let cardBody = $('<div>', view)
         .addClass('card-body')
         .html(cardTitle)
 
@@ -54,7 +58,7 @@ function Controller(model, view) {
     let $fighterIcons = $('#fighterIcons', view)
       .empty()
     if (model.fighters.length > 0) {
-      model.queued().forEach(fighter => {
+      model.fighters.forEach(fighter => {
         let fighterImg = $('<img>', view)
           .addClass('fighter-icon')
           .attr('src', fighter.opts.imgIcon)
@@ -63,6 +67,9 @@ function Controller(model, view) {
             self.renderDefender()
             $('#btnAtk', view).attr('disabled', false)
           })
+        if (model.queued().indexOf(fighter) === -1) {
+          fighterImg.addClass('disabled')
+        }
         $fighterIcons.append(fighterImg)
         $enemies.show()
       });
@@ -147,18 +154,21 @@ function Controller(model, view) {
     model.attack()
     self.renderDefender(hit = true)
     self.updateHealths()
+    let $btnAtk = $('#btnAtk', view)
     if (!model.defender) {
       self.updateIcons()
       $('#cardDefender', view).hide()
       $('#btnAtk', view).attr('disabled', true)
       if (model.won()) {
         // User won
+        $btnAtk.hide()
         self.displayWin()
       }
     } else if (!model.attacker) {
       // User Lost
       $('#cardAttacker', view).hide()
-      $('#btnAtk', view).hide()
+      $btnAtk.hide()
+      $btnAtk.attr('disabled', true)
       self.displayLost()
     }
   })

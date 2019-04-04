@@ -1,3 +1,22 @@
+@font-face {
+    font-family: "Gameboy";
+    src: url("../fonts/PKMN_RBYGSC.ttf");
+}
+
+.gb-text {
+    font-family: 'Gameboy', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.gb-border {
+    border-width: 3px;
+    border-style: solid;
+    /*border-color: #000;*/
+}
+
+.card.gb-border {
+    border-color: #000;
+}
+
 #arena {
     display: none
 }
@@ -27,6 +46,11 @@
 .fighter-icon {
     width: 100px;
     cursor: pointer;
+}
+
+.fighter-icon.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 @keyframes flickerAnimation {
