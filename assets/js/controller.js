@@ -14,17 +14,17 @@ function Controller(model, view) {
 
       let cardImg = $('<img>', view)
         .addClass('card-img-top')
-        .attr('src', fighter.opts.imgIcon)
-      let hpBadge = $('<span>', view)
-        .addClass('badge badge-primary')
-        .text(fighter.healthPoints)
+        .attr('src', fighter.opts.imgFront)
+      let hpBadge = $('<p>', view)
+        .addClass('badge badge-success')
+        .text(fighter.healthPoints + ' hp')
       let cardTitle = $('<h6>', view)
-        .addClass('card-title text-center')
+        .addClass('card-title')
         .text(fighter.opts.name + ' ')
-        .append(hpBadge)
       let cardBody = $('<div>', view)
-        .addClass('card-body')
-        .html(cardTitle)
+        .addClass('card-body text-center')
+        .append(cardTitle)
+        .append(hpBadge)
       let card = $('<div>', view)
         .addClass('card fighter-card shadow')
         .append(cardImg)
@@ -38,9 +38,9 @@ function Controller(model, view) {
   }
 
   this.initArena = function () {
+    this.renderAttacker()
     $('#welcome', view).hide()
     $('#arena', view).show()
-    this.renderAttacker()
     this.updateHealths()
     this.updateIcons()
   }
