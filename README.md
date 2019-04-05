@@ -1,5 +1,5 @@
 # Pocket RPG
-Pocket RPG is a simple fighting arena game based on a familiar Gameboy classic. Choosing your champion is only half the battle. Choosing your enemies wisely may prove to be the more valuable.
+Pocket RPG is a simple fighting arena game based on a familiar Gameboy classic. Choosing your champion is only half the battle. Choosing your enemies wisely may prove to be more valuable.
 
 Good luck!
 
