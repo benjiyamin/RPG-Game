@@ -163,6 +163,7 @@ function Controller(model, view) {
       $('#btnAtk', view).attr('disabled', true)
       if (model.won()) {
         // User won
+        console.log(this)
         $btnAtk.hide()
         self.displayWin()
       }
