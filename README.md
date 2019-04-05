@@ -8,6 +8,7 @@ Good luck!
 - [ ] Animation on knock out
 - [ ] Sounds / Music
 - [ ] Background
+- [ ] Design for mobile
 
 ## License
 

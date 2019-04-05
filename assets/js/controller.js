@@ -11,7 +11,6 @@ function Controller(model, view) {
     let $fighterCards = $('#fighterCards', view)
       .empty()
     model.fighters.forEach(fighter => {
-
       let cardImg = $('<img>', view)
         .addClass('card-img-top')
         .attr('src', fighter.opts.imgFront)
@@ -20,7 +19,7 @@ function Controller(model, view) {
         .text(fighter.healthPoints + ' hp')
       let cardTitle = $('<h6>', view)
         .addClass('card-title')
-        .text(fighter.opts.name + ' ')
+        .text(fighter.opts.name)
       let cardBody = $('<div>', view)
         .addClass('card-body text-center')
         .append(cardTitle)
@@ -39,10 +38,10 @@ function Controller(model, view) {
 
   this.initArena = function () {
     this.renderAttacker()
+    this.updateIcons()
     $('#welcome', view).hide()
     $('#arena', view).show()
     this.updateHealths()
-    this.updateIcons()
   }
 
   // Attacker in location
@@ -71,7 +70,6 @@ function Controller(model, view) {
             fighterImg.addClass('disabled')
           }
           $fighterIcons.append(fighterImg)
-          //$enemies.show()
         }
       });
       $enemies.show()
@@ -137,10 +135,9 @@ function Controller(model, view) {
   }
 
   this.reset = function () {
-    //this.initCards()
-    $('#welcome', view).show()
-    $('#arena', view).hide()
     this.initCards()
+    $('#arena', view).hide()
+    $('#welcome', view).show()
     $('.end-wrapper', view).hide()
     $('#wrapperDef', view)
       .show()
@@ -156,14 +153,13 @@ function Controller(model, view) {
     model.attack()
     self.renderDefender(hit = true)
     self.updateHealths()
-    let $btnAtk = $('#btnAtk', view)
+    let $btnAtk = $(this)
     if (!model.defender) {
       self.updateIcons()
       $('#cardDefender', view).hide()
       $('#btnAtk', view).attr('disabled', true)
       if (model.won()) {
         // User won
-        console.log(this)
         $btnAtk.hide()
         self.displayWin()
       }
